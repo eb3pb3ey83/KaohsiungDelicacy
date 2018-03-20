@@ -85,7 +85,7 @@ export default class StoreInfo extends Component {
                 return className;
               })()}
             >
-              <img src={val.pic} />              
+              <img src={val.pic} alt="img" />              
               <h2>{val.name}</h2>
               <div>地址：{val.add}</div>
               <div>營業時間：{val.opentime}</div>

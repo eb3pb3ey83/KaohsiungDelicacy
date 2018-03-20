@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import FindTheShop from '../components/FindTheShop';
 import StoreInfo from '../components/StoreInfo';
 import { 
@@ -9,12 +10,13 @@ import {
   searchShopName,
 } from '../actions';
 
-const propTypes = {
-  loadLocations: PropTypes.func,
-  searchArea: PropTypes.func,
-  searchShopName: PropTypes.func,
-}
+
 class App extends Component {
+  static propTypes = {
+    loadLocations: PropTypes.func,
+    searchArea: PropTypes.func,
+    searchShopName: PropTypes.func,
+  }  
   componentDidMount() {
     const props = this.props;
     props.loadLocations();
@@ -57,11 +59,16 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { 
+const mapDispatchToProps = (dispatch) => {
+  console.log('test');
+  return bindActionCreators({ 
     loadLocations,
     searchArea,
     searchShopName,
-  }
+  }, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(App)

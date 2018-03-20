@@ -45,7 +45,6 @@ export default function kaohsiungDelicacy(state = initialState, action) {
         storeInfo: allStoreInfo,
         areaStores: allStoreInfo,
       });
-      break;
     case SEARCH_AREA:
       const findAreaStores = () => {
         const { allStoreInfo } = state;
@@ -63,16 +62,13 @@ export default function kaohsiungDelicacy(state = initialState, action) {
         areaStores: findAreaStores(),
         storeInfo: findAreaStores(),
       });
-      break;
     case SEARCH_SHOP_NAME:
       return Object.assign({}, state, {
         storeInfo: state.areaStores.filter(val => {
           return val.name.indexOf(action.keyword) !== -1;
         }),
-      });
-      break;      
+      });     
     default:
-      return state
-      break;
+      return state;
   }
 }

@@ -28,8 +28,6 @@ export default class FindTheShop extends Component {
     const {
       isDataFetched,
       areas,
-      onSearchArea,
-      onSearchShopName,
     } = this.props;
     const {
       areaValue,
